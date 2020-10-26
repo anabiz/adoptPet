@@ -6,14 +6,14 @@ const Results = ({ pets }) => {
         <div className="search">
             {pets.length === 0 ? <hi>No Pet Found</hi> : (
                 pets.map(pet => {
-                    console.log(pet);
+                    //console.log(pet.id);
                     return <Pet animal={pet.type}
                         key={pet.id}
                         name={pet.name}
                         breed={pet.breeds.primary}
                         media={pet.photos}
-                        location={`${pet.contact.address.city}, ${pet.contact.address.state}`} i
-                        d={pet.id}
+                        location={`${pet.contact.address.city}, ${pet.contact.address.state}`}
+                        id={pet.id}
                     />
                 })
             )}
