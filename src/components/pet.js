@@ -79,7 +79,8 @@ export const Pet = ({ name, animal, breed, media, location, id }) => {
   if (media.length) {
     hero = media[0].small;
   }
-
+  console.log(name)
+  console.log(id);
   return (
     <div style={{ width: "100%", marginLeft: "100px" }}>
       <a
