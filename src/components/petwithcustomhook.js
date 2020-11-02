@@ -25,10 +25,11 @@ const Searchpet1 = () => {
         setBreed("");
 
         pet.breeds(animal).then(({ breeds }) => {
-            console.log(breeds);
             const breedStr = breeds.map(({ name }) => name);
             setBreeds(breedStr);
-        }, console.error)
+        }).catch((err)=>{
+          console.log(err);
+        })
     }, [animal, setBreed, setBreeds])
     
   return (
