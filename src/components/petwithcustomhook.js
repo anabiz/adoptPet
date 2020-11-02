@@ -8,30 +8,34 @@ const Searchpet1 = () => {
   const [location, setLocation] = useState("seattle, WA");
   const [breeds, setBreeds] = useState([]);
   const [animal, AnimalDropdown] = useDropDown("Animal", "dog", ANIMALS);
-    const [breed, BreedDropdown, setBreed] = useDropDown("Breed", "", breeds);
-    const [pets, setPet] = useState([]);
+  const [breed, BreedDropdown, setBreed] = useDropDown("Breed", "", breeds);
+  const [pets, setPet] = useState([]);
 
-    async function requestPet() {
-        const { animals } = await pet.animals({
-            location,
-            breed,
-            type: animal
-        }) 
-        setPet(animals || [])
-    }
-    
-    useEffect(() => {
-        setBreeds([]);
-        setBreed("");
+  async function requestPet() {
+    const { animals } = await pet.animals({
+      location,
+      breed,
+      type: animal
+    })
+    setPet(animals || [])
+  }
 
-        pet.breeds(animal).then(({ breeds }) => {
-            const breedStr = breeds.map(({ name }) => name);
-            setBreeds(breedStr);
-        }).catch((err)=>{
-          console.log(err);
-        })
-    }, [animal, setBreed, setBreeds])
-    
+  useEffect(() => {
+    setBreeds([]);
+    setBreed("");
+
+    pet.breeds(animal).then(({ breeds }) => {
+      const breedStr = [];
+      for (let index = 0; index < breeds.length; index++) {
+        breedStr.push(array[index].name);
+      }
+      //const breedStr = breeds.map(({ name }) => name);
+      setBreeds(breedStr);
+    }).catch((err) => {
+      console.log(err);
+    })
+  }, [animal, setBreed, setBreeds])
+
   return (
     <div
       className="search-param"
@@ -42,7 +46,7 @@ const Searchpet1 = () => {
         width: "80%",
       }}
     >
-      <div style={{width:"500px", backgroundColor:"yellow"}}>
+      <div style={{ width: "500px", backgroundColor: "yellow" }}>
         <form
           style={{
             display: "flex",
