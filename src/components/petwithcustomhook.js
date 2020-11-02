@@ -27,7 +27,7 @@ const Searchpet1 = () => {
     pet.breeds(animal).then(({ breeds }) => {
       const breedStr = [];
       for (let index = 0; index < breeds.length; index++) {
-        breedStr.push(array[index].name);
+        breedStr.push(breeds[index].name);
       }
       //const breedStr = breeds.map(({ name }) => name);
       setBreeds(breedStr);
